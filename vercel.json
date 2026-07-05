@@ -5,18 +5,8 @@
       "src": "app-src/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "../transfer web"
+        "distDir": "dist"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "transfer web/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "transfer web/$1"
     }
   ]
 }
