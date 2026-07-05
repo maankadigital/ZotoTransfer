@@ -1,6 +1,4 @@
 {
   "version": 2,
-  "outputDirectory": "app-src/dist",
-  "framework": "vite",
   "cleanUrls": true
 }
