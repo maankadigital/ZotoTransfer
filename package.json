@@ -1,0 +1,11 @@
+{
+  "name": "zototransfer-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "app-src"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=app-src"
+  }
+}
