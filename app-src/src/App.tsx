@@ -16,8 +16,17 @@ import { AdminSuite } from './pages/AdminSuite';
 // ─── App Content ────────────────────────────────────────────────────────────
 const AppContent: React.FC = () => {
   const { currentView, setView, currentUser } = useApp();
-  // Initialize dark mode at the top of the component tree
-  useDarkMode();
+  const { dark } = useDarkMode();
+
+  useEffect(() => {
+    const isDashboardOrAdmin = currentView === 'dashboard' || currentView === 'admin';
+    const html = document.documentElement;
+    if (isDashboardOrAdmin && dark) {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+  }, [currentView, dark]);
 
   const currentViewRef = React.useRef(currentView);
   
