@@ -1,12 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "app-src/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ]
+  "outputDirectory": "app-src/dist",
+  "framework": "vite",
+  "cleanUrls": true
 }
