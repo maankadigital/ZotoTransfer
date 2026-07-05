@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transfer Analytics Dashboard - MyTransfer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727781",
+                    "surface-container-highest": "#dce2f7",
+                    "secondary": "#2d609b",
+                    "on-secondary-fixed": "#001c39",
+                    "tertiary-container": "#4f77a4",
+                    "primary": "#225e9c",
+                    "on-secondary-container": "#114c86",
+                    "on-surface": "#141b2b",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d3e3ff",
+                    "tertiary-fixed-dim": "#a1cafb",
+                    "surface-tint": "#25609f",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#074882",
+                    "on-surface-variant": "#424750",
+                    "surface-variant": "#dce2f7",
+                    "on-primary-fixed-variant": "#004882",
+                    "surface": "#f9f9ff",
+                    "surface-dim": "#d3daef",
+                    "on-primary-fixed": "#001c39",
+                    "surface-container": "#e9edff",
+                    "primary-fixed-dim": "#a3c9ff",
+                    "surface-container-high": "#e1e8fd",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "inverse-on-surface": "#edf0ff",
+                    "secondary-container": "#90beff",
+                    "outline-variant": "#c2c6d2",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#293040",
+                    "on-tertiary-fixed": "#001d36",
+                    "background": "#f9f9ff",
+                    "surface-bright": "#f9f9ff",
+                    "tertiary": "#355e89",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#d4e3ff",
+                    "tertiary-fixed": "#d1e4ff",
+                    "primary-container": "#4077b7",
+                    "on-tertiary-fixed-variant": "#1c4973",
+                    "on-tertiary-container": "#fdfcff",
+                    "inverse-primary": "#a3c9ff",
+                    "on-primary-container": "#fdfcff",
+                    "surface-container-low": "#f1f3ff",
+                    "on-background": "#141b2b",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "md": "24px",
+                    "xl": "64px",
+                    "lg": "40px",
+                    "container-max": "1280px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for data tables */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c2c6d2; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #727781; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md flex h-screen overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Shared Component: SideNavBar -->
+<aside class="bg-surface-container-low docked left-0 h-full w-xl min-w-[260px] flex flex-col py-md px-sm border-r border-outline-variant shrink-0 z-10 transition-all duration-300">
+<!-- Header -->
+<div class="flex items-center gap-sm px-sm mb-lg">
+<div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center shadow-sm shrink-0">
+<span class="material-symbols-outlined icon-fill">workspace_premium</span>
+</div>
+<div class="flex flex-col truncate">
+<span class="text-headline-sm font-headline-sm font-bold text-primary truncate">Enterprise Workspace</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Pro Plan</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 flex flex-col gap-base overflow-y-auto">
+<!-- Tab 1: Dashboard (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-95 active:scale-90 transition-transform rounded-xl" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Tab 2: All Files (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-95 active:scale-90 transition-transform rounded-xl" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_shared</span>
+<span class="font-label-md text-label-md">All Files</span>
+</a>
+<!-- Tab 3: Analytics (Active) -->
+<a class="flex items-center gap-sm px-sm py-2 bg-secondary-container text-on-secondary-container rounded-xl scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px] icon-fill">analytics</span>
+<span class="font-label-md text-label-md font-semibold">Analytics</span>
+</a>
+<!-- Tab 4: Team (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-95 active:scale-90 transition-transform rounded-xl" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="font-label-md text-label-md">Team</span>
+</a>
+<!-- Tab 5: Settings (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-95 active:scale-90 transition-transform rounded-xl" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<!-- CTA & Footer -->
+<div class="mt-auto pt-md border-t border-outline-variant/30 flex flex-col gap-sm">
+<div class="px-xs mb-sm">
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md shadow-sm hover:opacity-90 transition-opacity">
+                    Upgrade Storage
+                </button>
+</div>
+<a class="flex items-center gap-sm px-sm py-2 text-on-surface-variant hover:bg-surface-container-high transition-all scale-95 active:scale-90 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 text-on-surface-variant hover:bg-surface-container-high transition-all scale-95 active:scale-90 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="font-label-md text-label-md">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col overflow-y-auto bg-surface-bright relative">
+<div class="max-w-container-max mx-auto w-full px-lg py-lg flex flex-col gap-xl">
+<!-- Header: Transfer Summary -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="flex flex-col gap-sm">
+<!-- Title & Badges -->
+<div class="flex items-center gap-md flex-wrap">
+<div class="flex items-center gap-xs text-primary bg-primary-container/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-[28px] icon-fill">folder_zip</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Q4_Financial_Reports_Final.zip</h1>
+<div class="flex gap-xs mt-1">
+<span class="bg-tertiary-container/20 text-tertiary border border-tertiary-container/30 px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Active
+                            </span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span> Secure Link
+                            </span>
+</div>
+</div>
+<!-- Metadata -->
+<div class="flex items-center gap-md font-body-md text-body-md text-on-surface-variant ml-2">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">draft</span> 12 Files</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">hard_drive</span> 4.2 GB</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1 text-primary"><span class="material-symbols-outlined text-[16px]">timer</span> Expires in 48 hours</span>
+</div>
+</div>
+<!-- Page Actions -->
+<div class="flex items-center gap-sm shrink-0">
+<button class="px-md py-2 bg-surface-container-lowest border border-outline-variant text-on-surface rounded-lg font-label-md text-label-md shadow-sm hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span> Export CSV
+                    </button>
+<button class="px-md py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md shadow-sm hover:bg-surface-tint transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">share</span> Link Settings
+                    </button>
+</div>
+</header>
+<!-- Key Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Metric 1: Downloads -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md border border-outline-variant/50 shadow-[0_4px_24px_rgba(77,130,195,0.04)] flex flex-col justify-between hover:shadow-[0_8px_32px_rgba(77,130,195,0.08)] transition-shadow duration-300 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-fixed-dim/20 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex items-center gap-2 text-on-surface-variant mb-xl">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<h3 class="font-label-md text-label-md">Total Downloads</h3>
+</div>
+<div>
+<div class="font-display text-display text-on-surface">3,492</div>
+<div class="flex items-center gap-1 text-primary mt-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+24% from last week</span>
+</div>
+</div>
+</div>
+<!-- Metric 2: Unique Viewers -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md border border-outline-variant/50 shadow-[0_4px_24px_rgba(77,130,195,0.04)] flex flex-col justify-between hover:shadow-[0_8px_32px_rgba(77,130,195,0.08)] transition-shadow duration-300">
+<div class="flex items-center gap-2 text-on-surface-variant mb-xl">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<h3 class="font-label-md text-label-md">Unique Viewers</h3>
+</div>
+<div>
+<div class="font-display text-display text-on-surface">1,844</div>
+<div class="flex items-center gap-1 text-tertiary mt-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span>Across 42 organizations</span>
+</div>
+</div>
+</div>
+<!-- Metric 3: Top Region -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md border border-outline-variant/50 shadow-[0_4px_24px_rgba(77,130,195,0.04)] flex flex-col justify-between hover:shadow-[0_8px_32px_rgba(77,130,195,0.08)] transition-shadow duration-300">
+<div class="flex items-center gap-2 text-on-surface-variant mb-xl">
+<span class="material-symbols-outlined text-[20px]">public</span>
+<h3 class="font-label-md text-label-md">Top Region</h3>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-on-surface flex items-center gap-2">
+                            United States
+                        </div>
+<div class="flex items-center justify-between mt-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>64% of total traffic</span>
+<span class="text-primary font-medium">2,234 dl</span>
+</div>
+<!-- Minimal Progress Bar -->
+<div class="w-full bg-surface-container-high h-2 rounded-full mt-2 overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-container h-full rounded-full" style="width: 64%"></div>
+</div>
+</div>
+</div>
+<!-- Metric 4: Avg Transfer Speed -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md border border-outline-variant/50 shadow-[0_4px_24px_rgba(77,130,195,0.04)] flex flex-col justify-between hover:shadow-[0_8px_32px_rgba(77,130,195,0.08)] transition-shadow duration-300">
+<div class="flex items-center gap-2 text-on-surface-variant mb-xl">
+<span class="material-symbols-outlined text-[20px]">speed</span>
+<h3 class="font-label-md text-label-md">Avg. Transfer Speed</h3>
+</div>
+<div>
+<div class="font-display text-display text-on-surface flex items-baseline gap-1">
+                            84 <span class="font-headline-sm text-headline-sm text-outline">MB/s</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">bolt</span>
+<span>Optimal network conditions</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Data Section: Tracking Intelligence -->
+<section class="bg-surface-container-lowest rounded-[24px] border border-outline-variant/50 shadow-[0_4px_32px_rgba(77,130,195,0.06)] overflow-hidden flex flex-col">
+<!-- Section Header -->
+<div class="p-md border-b border-outline-variant/30 flex flex-col md:flex-row md:items-center justify-between gap-md bg-surface-container-low/30">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">radar</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Tracking Intelligence</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time log of all access and interactions with this transfer.</p>
+</div>
+</div>
+<div class="relative w-full md:w-72 shrink-0">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all font-body-sm text-body-sm placeholder:text-outline-variant" placeholder="Search by IP, location, or user..." type="text"/>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse whitespace-nowrap min-w-[800px]">
+<thead>
+<tr class="bg-surface-bright/50 border-b border-outline-variant/50 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="px-md py-4 font-medium">Recipient / IP</th>
+<th class="px-md py-4 font-medium">Location</th>
+<th class="px-md py-4 font-medium">Device Profile</th>
+<th class="px-md py-4 font-medium">Event Status</th>
+<th class="px-md py-4 font-medium text-right">Timestamp</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors group">
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface font-label-md">S</div>
+<div class="flex flex-col">
+<span class="font-medium text-on-surface group-hover:text-primary transition-colors">sarah.jenkins@corp.com</span>
+<span class="text-outline font-mono text-[12px]">192.168.1.104</span>
+</div>
+</div>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-2">
+<img class="w-5 h-5 rounded-full object-cover border border-outline-variant/30" data-alt="A small circular high-quality icon of the United States flag, highly detailed and vibrant, set against a pristine white background, minimalist and modern UI element style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuButKyzLxB_9l4baCDv9oNngOBs6AXja9hTIdovxvHKmPeL1XOVuzqGV78GsPDnVmYrBkytIZBJRs-CHqo9xIhX6e6Es8kj9LzFiXLVPGKdxcSdpuzMpn1-mad0HHJNURXxzqPTjfa_faUaZhEstNPq-1ceDvISXOtAaxqVNahbX0kqAH7FN6J5l-sJUUOc4vgXvHN7EWk9G4m3eJOH925Hbzn0bcJlpsSi7Ib8v_znmJtaF_Wuw9iKqoXAcfZALlepusSSbd9zcpY"/>
+<span>New York, NY, USA</span>
+</div>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">laptop_mac</span>
+<span>Mac OS • Safari 16</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-tertiary-container/10 text-tertiary-container border border-tertiary-container/20 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+                                        Full Download
+                                    </span>
+</td>
+<td class="px-md py-4 text-right text-on-surface-variant">
+                                    Just now
+                                </td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors group">
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface font-label-md">M</div>
+<div class="flex flex-col">
+<span class="font-medium text-on-surface group-hover:text-primary transition-colors">m.chen@partner-agency.uk</span>
+<span class="text-outline font-mono text-[12px]">82.132.21.55</span>
+</div>
+</div>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-2">
+<img class="w-5 h-5 rounded-full object-cover border border-outline-variant/30" data-alt="A small circular high-quality icon of the United Kingdom flag, highly detailed and vibrant, set against a pristine white background, minimalist and modern UI element style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzBYgj8qM0a7JTqOKDL-J7PhstkNuWkmyC-nOVX-MhIxufENS_tTLsr4QlH33aHM2DohknQWuCAniMpaFlHN8Ybpgg205__o3_94dFMzMeMtL9Q6zmNe5v9JKVOOLixotKk-8M_UTmYT2V2nJL3XpC5m7SsSdbfy9F_GdLzAoECuGy0UEAF3rGHTif5MTLhpPNHkf5IHsgyn2Rf3PmfaoP9JkGEPYETBeaeU1vyD9zvwDBtePZRgIiHh6KyZcpucbU6kexF0xDIgw"/>
+<span>London, UK</span>
+</div>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">smartphone</span>
+<span>iOS 17 • Chrome</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-highest text-on-surface-variant border border-outline-variant/30 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                        Previewed File
+                                    </span>
+</td>
+<td class="px-md py-4 text-right text-on-surface-variant">
+                                    12 mins ago
+                                </td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors group">
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-outline font-label-md">
+<span class="material-symbols-outlined text-[16px]">question_mark</span>
+</div>
+<div class="flex flex-col">
+<span class="font-medium text-on-surface group-hover:text-primary transition-colors">Anonymous Visitor</span>
+<span class="text-outline font-mono text-[12px]">203.0.113.42</span>
+</div>
+</div>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-2">
+<img class="w-5 h-5 rounded-full object-cover border border-outline-variant/30" data-alt="A small circular high-quality icon of the Japanese flag, highly detailed and vibrant, set against a pristine white background, minimalist and modern UI element style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASOooafj9a5nJiqw3fdKyjNlRW6lKiCoy6FBC7R7BHYiE242nnZ1zg477Ibu3TFwq42TRxnTSgD12m4dIDGxM1fRLT64VSPja8TQCpOByU_eHlwukY16UB1RYHbyefz1GgTXW4dmaQvxeXwvGe03LZqizZSo4bGNfSzWL_pmKkNYJnJVj_YR18mo3BNmXP5vt0U-MMcGN8PrVfyzKyEb_FdWJ2h5iE0qTU5fsMRqjgziGY-AOI7RvDIED1IFfyxb9C3OFWIU-1fhw"/>
+<span>Tokyo, Japan</span>
+</div>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">desktop_windows</span>
+<span>Windows 11 • Edge</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-tertiary-container/10 text-tertiary-container border border-tertiary-container/20 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+                                        Partial Download
+                                    </span>
+</td>
+<td class="px-md py-4 text-right text-on-surface-variant">
+                                    45 mins ago
+                                </td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors group">
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface font-label-md">D</div>
+<div class="flex flex-col">
+<span class="font-medium text-on-surface group-hover:text-primary transition-colors">david.w@corp.com</span>
+<span class="text-outline font-mono text-[12px]">192.168.1.205</span>
+</div>
+</div>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-2">
+<img class="w-5 h-5 rounded-full object-cover border border-outline-variant/30" data-alt="A small circular high-quality icon of the Canadian flag, highly detailed and vibrant, set against a pristine white background, minimalist and modern UI element style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRtOFUp-TZPxdwqIZnWAfS4ECIcS-mN8veBLgbR5Ftg1hSym8NdtH07KiS_Tjqy3X3YSfMEILa1qHd06G4oiNfIoxSrvW4vhdVr-FXfCqNBnmAWuSQ2ExxPV4QnZxy_MQvJlSRrn5f5rypedzuUJDfrqsd18oP9NbiXOvnM-IOCQ6YUWyl16AHf5BQmacuwzqtTdffLJH2z9Lj4J3zu3CpHEOigH8f_9agWdpEurPNlFE6oPRcfUReDCETWr0znnr61XlyPPYnH5Y"/>
+<span>Toronto, Canada</span>
+</div>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">laptop_mac</span>
+<span>Mac OS • Chrome</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-error-container/20 text-error border border-error-container/30 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                        Failed Attempt
+                                    </span>
+</td>
+<td class="px-md py-4 text-right text-on-surface-variant">
+                                    2 hours ago
+                                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer -->
+<div class="p-md border-t border-outline-variant/30 flex items-center justify-between bg-surface-container-lowest">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 1 to 4 of 1,248 entries</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-outline hover:bg-surface-container-low transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-on-primary font-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-label-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-label-sm">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-outline">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bottom spacer for scrolling -->
+<div class="h-lg w-full"></div>
+</div>
+</main>
+</body></html>

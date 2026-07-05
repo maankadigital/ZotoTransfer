@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>File Request - MyTransfer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#edf0ff",
+                      "surface-container": "#e9edff",
+                      "tertiary": "#355e89",
+                      "surface-container-high": "#e1e8fd",
+                      "secondary-container": "#90beff",
+                      "on-primary-fixed-variant": "#004882",
+                      "on-primary-container": "#fdfcff",
+                      "on-secondary-fixed": "#001c39",
+                      "on-tertiary-fixed-variant": "#1c4973",
+                      "on-secondary-container": "#114c86",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#424750",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#d4e3ff",
+                      "on-tertiary-container": "#fdfcff",
+                      "background": "#f9f9ff",
+                      "surface": "#f9f9ff",
+                      "secondary-fixed-dim": "#a4c9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#d3daef",
+                      "tertiary-container": "#4f77a4",
+                      "primary-fixed-dim": "#a3c9ff",
+                      "inverse-primary": "#a3c9ff",
+                      "surface-container-low": "#f1f3ff",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#dce2f7",
+                      "surface-tint": "#25609f",
+                      "outline-variant": "#c2c6d2",
+                      "primary-container": "#4077b7",
+                      "inverse-surface": "#293040",
+                      "tertiary-fixed-dim": "#a1cafb",
+                      "secondary": "#2d609b",
+                      "surface-container-highest": "#dce2f7",
+                      "on-secondary-fixed-variant": "#074882",
+                      "on-tertiary-fixed": "#001d36",
+                      "on-background": "#141b2b",
+                      "tertiary-fixed": "#d1e4ff",
+                      "outline": "#727781",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#f9f9ff",
+                      "on-surface": "#141b2b",
+                      "on-primary": "#ffffff",
+                      "primary": "#225e9c",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#d3e3ff",
+                      "on-primary-fixed": "#001c39"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "xs": "8px",
+                      "lg": "40px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "sm": "16px",
+                      "base": "4px",
+                      "xl": "64px"
+              },
+              "fontFamily": {
+                      "display": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .ambient-shadow {
+            box-shadow: 0 10px 40px -10px rgba(77, 130, 195, 0.08);
+        }
+        .drag-active {
+            background-color: #f0f7ff;
+            border-color: #4D82C3;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<!-- Navbar Suppressed: Intent is Transactional (External File Upload) -->
+<header class="w-full py-md px-lg flex justify-center border-b border-surface-variant bg-surface">
+<div class="text-headline-md font-display font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sync_alt</span>
+            MyTransfer
+        </div>
+</header>
+<main class="flex-grow flex items-center justify-center p-md sm:p-lg">
+<div class="w-full max-w-2xl bg-surface-container-lowest rounded-[24px] border border-outline-variant/30 ambient-shadow p-lg">
+<!-- Header Section -->
+<div class="text-center mb-xl">
+<div class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container mx-auto mb-sm flex items-center justify-center overflow-hidden">
+<img alt="Sarah Jenkins" class="w-full h-full object-cover" data-alt="A professional headshot of a graphic designer, bright modern lighting, minimalist studio background, soft shadows, high resolution, photorealistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkWrucnrMVawfbn43pkadwc_D54EDh5nfc-BhOlSrrv0vGPgpVz2MsH98p49nMYdG_72-FIhtExVhCt5i92i8ut9vKlL9IAholheDGKK0MVqk3nfzap_YmyxytagznPfSWjKxRy8KNq8Zv1QU1upUaCgTCFhOkRjtz9_BBuB37o92C5CUcKnL2ybOM_7cnBrjGevbHKnGtlIvF9yRtiqevsdCaDJC1O06OtUOjzJEZmCMAons7zHorfx1oDV9Wdg8g2y8_BnvWYEk"/>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Sarah Jenkins is requesting files</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto">
+                    "Hi there! Please securely upload the high-res campaign assets and final export renders we discussed yesterday. Thank you!"
+                </p>
+</div>
+<!-- Drag & Drop Zone -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl bg-surface-container-low p-xl text-center transition-all duration-200 ease-in-out cursor-pointer hover:border-primary hover:bg-surface-container mb-lg" id="drop-zone">
+<span class="material-symbols-outlined text-[48px] text-primary mb-sm block">cloud_upload</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-base">Drag and drop files here</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">or <span class="text-primary font-medium">browse your computer</span></p>
+<p class="font-body-sm text-body-sm text-outline mt-sm">Supports any file type up to 50GB</p>
+<input class="hidden" id="file-input" multiple="" type="file"/>
+</div>
+<!-- Staged Files List -->
+<div class="space-y-sm mb-lg">
+<!-- File Item 1 -->
+<div class="flex items-center justify-between p-sm bg-surface rounded-lg border border-outline-variant/50">
+<div class="flex items-center gap-sm overflow-hidden">
+<div class="w-10 h-10 rounded bg-tertiary-container text-on-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">image</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-on-surface truncate">Q3_Campaign_Hero_V2.psd</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">142 MB</p>
+</div>
+</div>
+<button class="text-outline hover:text-error transition-colors p-2 rounded-full hover:bg-error-container/20">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- File Item 2 -->
+<div class="flex items-center justify-between p-sm bg-surface rounded-lg border border-outline-variant/50">
+<div class="flex items-center gap-sm overflow-hidden">
+<div class="w-10 h-10 rounded bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">movie</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-on-surface truncate">Social_Teaser_Final_Export.mp4</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">450 MB</p>
+</div>
+</div>
+<button class="text-outline hover:text-error transition-colors p-2 rounded-full hover:bg-error-container/20">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Action Area -->
+<div class="border-t border-outline-variant/30 pt-lg flex items-center justify-between">
+<div class="text-on-surface-variant font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">2 files</span> selected (592 MB)
+                </div>
+<button class="bg-primary hover:bg-on-primary-fixed-variant text-on-primary font-label-md text-label-md py-3 px-6 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center gap-2">
+                    Upload Files
+                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest text-on-surface-variant py-md border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-lg flex flex-col md:flex-row justify-between items-center gap-sm">
+<div class="text-label-md font-bold text-primary">MyTransfer</div>
+<div class="font-body-sm text-body-sm">© 2024 MyTransfer Inc. All rights reserved.</div>
+<div class="flex gap-md font-body-sm text-body-sm">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Security</a>
+<a class="hover:text-primary transition-colors" href="#">Status</a>
+</div>
+</div>
+</footer>
+<script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        // Highlight drop zone when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('drag-active');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('drag-active');
+        }
+
+        // Handle dropped files
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+            handleFiles(files);
+        }
+
+        // Handle click to browse
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            // In a real app, this would update the UI with the selected files
+            console.log("Files selected:", files);
+        }
+    </script>
+</body></html>

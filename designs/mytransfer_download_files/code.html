@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyTransfer - You received a transfer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#727781",
+                      "surface-container-highest": "#dce2f7",
+                      "secondary": "#2d609b",
+                      "on-secondary-fixed": "#001c39",
+                      "tertiary-container": "#4f77a4",
+                      "primary": "#225e9c",
+                      "on-secondary-container": "#114c86",
+                      "on-surface": "#141b2b",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#d3e3ff",
+                      "tertiary-fixed-dim": "#a1cafb",
+                      "surface-tint": "#25609f",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#074882",
+                      "on-surface-variant": "#424750",
+                      "surface-variant": "#dce2f7",
+                      "on-primary-fixed-variant": "#004882",
+                      "surface": "#f9f9ff",
+                      "surface-dim": "#d3daef",
+                      "on-primary-fixed": "#001c39",
+                      "surface-container": "#e9edff",
+                      "primary-fixed-dim": "#a3c9ff",
+                      "surface-container-high": "#e1e8fd",
+                      "secondary-fixed-dim": "#a4c9ff",
+                      "inverse-on-surface": "#edf0ff",
+                      "secondary-container": "#90beff",
+                      "outline-variant": "#c2c6d2",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#293040",
+                      "on-tertiary-fixed": "#001d36",
+                      "background": "#f9f9ff",
+                      "surface-bright": "#f9f9ff",
+                      "tertiary": "#355e89",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#d4e3ff",
+                      "tertiary-fixed": "#d1e4ff",
+                      "primary-container": "#4077b7",
+                      "on-tertiary-fixed-variant": "#1c4973",
+                      "on-tertiary-container": "#fdfcff",
+                      "inverse-primary": "#a3c9ff",
+                      "on-primary-container": "#fdfcff",
+                      "surface-container-low": "#f1f3ff",
+                      "on-background": "#141b2b",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "16px",
+                      "md": "24px",
+                      "xl": "64px",
+                      "lg": "40px",
+                      "container-max": "1280px",
+                      "base": "4px",
+                      "gutter": "24px",
+                      "xs": "8px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "display": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC;
+        }
+        .glass-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 10px 40px -10px rgba(77, 130, 195, 0.08);
+            border-radius: 24px;
+        }
+        .file-item {
+            transition: all 0.2s ease-in-out;
+            border: 1px solid transparent;
+        }
+        .file-item:hover {
+            background-color: #F8FAFC;
+            border-color: #E2E8F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px -4px rgba(77, 130, 195, 0.08);
+        }
+        /* Custom Checkbox Styling */
+        input[type="checkbox"] {
+            border-color: #c2c6d2;
+            border-radius: 4px;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #225e9c; /* primary */
+            border-color: #225e9c;
+        }
+        input[type="checkbox"]:focus {
+            --tw-ring-color: #4077b7; /* primary-container */
+            --tw-ring-offset-width: 2px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation (Suppressed per logic, using a minimal brand anchor instead for a transactional page) -->
+<header class="w-full px-lg py-md flex justify-between items-center max-w-container-max mx-auto">
+<div class="flex items-center gap-xs cursor-pointer hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary text-[32px]">deployed_code</span>
+<span class="font-headline-md text-headline-md text-primary font-bold tracking-tight">MyTransfer</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-sm py-xl md:py-16">
+<div class="w-full max-w-3xl glass-card overflow-hidden flex flex-col md:flex-row relative">
+<!-- Left Side: Sender Info & Message -->
+<div class="md:w-5/12 bg-surface-container-low p-md border-b md:border-b-0 md:border-r border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface shadow-sm">
+<img alt="Sender avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a confident creative director in a bright, modern office space. High-key lighting, minimalist aesthetic with cool blue and crisp white tones. Clean composition, shallow depth of field, evoking trust and expertise in a corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOzK-DEyfS9TJcJziaz-zcKY3QZ3L-ZOUKUlFEV7nepsasxp9shFVkXTIduFwzdpk37htIwj366TuyzGWIbmT1kkIOdkI4VmIdWmtlSn8rmXffHgPWETPuPhjNKIoD48U98-Z_Ah8CrbtDqCalsPkhK-5L-m8Yds2d5DrE-RTfk5r0j4LfyWflMXAAPTgzBaEVsoQeEn-AP7xcdKNqVT2O7t4j7BD9SnY_94V_oflcCbFQvyPx7jjeDCrOfAxGYkHc0E_WdC5bkU0"/>
+</div>
+<div>
+<h2 class="font-label-md text-label-md text-on-surface font-semibold">Sarah Jenkins</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">sarah.j@acmecorp.com</p>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold mb-sm">
+                        You received a transfer
+                    </h1>
+<div class="mt-md">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-xs">Message</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            "Hey team, here are the final design assets and the updated presentation deck for tomorrow's client meeting. Let me know if you need any adjustments before the call."
+                        </p>
+</div>
+</div>
+<div class="mt-xl flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm font-medium">Scanned for viruses. Encrypted delivery.</span>
+</div>
+</div>
+<!-- Right Side: File List & Action -->
+<div class="md:w-7/12 p-md md:p-lg flex flex-col">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">3 Files</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">• 124 MB total</span>
+</div>
+<label class="flex items-center gap-2 cursor-pointer font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors">
+<input checked="" class="w-4 h-4 text-primary focus:ring-primary rounded border-outline-variant" id="selectAll" type="checkbox"/>
+<span>Select All</span>
+</label>
+</div>
+<!-- File List -->
+<div class="flex-grow flex flex-col gap-base mb-md overflow-y-auto pr-2" style="max-height: 400px;">
+<!-- File 1 -->
+<div class="file-item flex items-center justify-between p-sm rounded-xl cursor-pointer group">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md text-on-surface truncate pr-2 group-hover:text-primary transition-colors">Q3_Client_Presentation_Final.pdf</p>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant rounded font-label-sm text-[10px] uppercase">PDF</span>
+<span class="font-body-sm text-[12px] text-outline">4.2 MB</span>
+</div>
+</div>
+</div>
+<input checked="" class="file-checkbox w-5 h-5 text-primary focus:ring-primary rounded border-outline-variant" type="checkbox"/>
+</div>
+<!-- File 2 -->
+<div class="file-item flex items-center justify-between p-sm rounded-xl cursor-pointer group">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined">folder_zip</span>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md text-on-surface truncate pr-2 group-hover:text-primary transition-colors">Brand_Assets_HighRes.zip</p>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant rounded font-label-sm text-[10px] uppercase">ZIP</span>
+<span class="font-body-sm text-[12px] text-outline">118 MB</span>
+</div>
+</div>
+</div>
+<input checked="" class="file-checkbox w-5 h-5 text-primary focus:ring-primary rounded border-outline-variant" type="checkbox"/>
+</div>
+<!-- File 3 -->
+<div class="file-item flex items-center justify-between p-sm rounded-xl cursor-pointer group">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md text-on-surface truncate pr-2 group-hover:text-primary transition-colors">Hero_Image_OptionB.png</p>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant rounded font-label-sm text-[10px] uppercase">PNG</span>
+<span class="font-body-sm text-[12px] text-outline">1.8 MB</span>
+</div>
+</div>
+</div>
+<input checked="" class="file-checkbox w-5 h-5 text-primary focus:ring-primary rounded border-outline-variant" type="checkbox"/>
+</div>
+</div>
+<!-- Action Area -->
+<div class="pt-sm border-t border-surface-container-highest mt-auto">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md font-semibold py-3 px-6 rounded-xl hover:bg-surface-tint shadow-sm hover:shadow-md transition-all active:scale-[0.98] flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Download All
+                    </button>
+<p class="text-center font-body-sm text-[12px] text-outline mt-sm">Link expires in 6 days</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Minimalist Footer -->
+<footer class="w-full py-md text-center">
+<p class="font-body-sm text-body-sm text-outline-variant">
+            © 2024 MyTransfer. Secure file delivery.
+        </p>
+</footer>
+<script>
+        // Simple Select All Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const fileCheckboxes = document.querySelectorAll('.file-checkbox');
+            const downloadBtn = document.querySelector('button');
+
+            selectAllCheckbox.addEventListener('change', (e) => {
+                fileCheckboxes.forEach(cb => {
+                    cb.checked = e.target.checked;
+                });
+                updateButtonState();
+            });
+
+            fileCheckboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const allChecked = Array.from(fileCheckboxes).every(c => c.checked);
+                    const someChecked = Array.from(fileCheckboxes).some(c => c.checked);
+                    
+                    selectAllCheckbox.checked = allChecked;
+                    selectAllCheckbox.indeterminate = someChecked && !allChecked;
+                    
+                    updateButtonState();
+                });
+            });
+
+            function updateButtonState() {
+                const checkedCount = Array.from(fileCheckboxes).filter(c => c.checked).length;
+                if (checkedCount === 0) {
+                    downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    downloadBtn.classList.remove('hover:bg-surface-tint', 'hover:shadow-md', 'active:scale-[0.98]');
+                    downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">block</span>Select files to download';
+                } else if (checkedCount === fileCheckboxes.length) {
+                    downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    downloadBtn.classList.add('hover:bg-surface-tint', 'hover:shadow-md', 'active:scale-[0.98]');
+                    downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">download</span>Download All';
+                } else {
+                    downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    downloadBtn.classList.add('hover:bg-surface-tint', 'hover:shadow-md', 'active:scale-[0.98]');
+                    downloadBtn.innerHTML = `<span class="material-symbols-outlined text-[20px]">download</span>Download Selected (${checkedCount})`;
+                }
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyTransfer - Transfer Files Without Limits</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727781",
+                    "surface-container-highest": "#dce2f7",
+                    "secondary": "#2d609b",
+                    "on-secondary-fixed": "#001c39",
+                    "tertiary-container": "#4f77a4",
+                    "primary": "#225e9c",
+                    "on-secondary-container": "#114c86",
+                    "on-surface": "#141b2b",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d3e3ff",
+                    "tertiary-fixed-dim": "#a1cafb",
+                    "surface-tint": "#25609f",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#074882",
+                    "on-surface-variant": "#424750",
+                    "surface-variant": "#dce2f7",
+                    "on-primary-fixed-variant": "#004882",
+                    "surface": "#f9f9ff",
+                    "surface-dim": "#d3daef",
+                    "on-primary-fixed": "#001c39",
+                    "surface-container": "#e9edff",
+                    "primary-fixed-dim": "#a3c9ff",
+                    "surface-container-high": "#e1e8fd",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "inverse-on-surface": "#edf0ff",
+                    "secondary-container": "#90beff",
+                    "outline-variant": "#c2c6d2",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#293040",
+                    "on-tertiary-fixed": "#001d36",
+                    "background": "#f9f9ff",
+                    "surface-bright": "#f9f9ff",
+                    "tertiary": "#355e89",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#d4e3ff",
+                    "tertiary-fixed": "#d1e4ff",
+                    "primary-container": "#4077b7",
+                    "on-tertiary-fixed-variant": "#1c4973",
+                    "on-tertiary-container": "#fdfcff",
+                    "inverse-primary": "#a3c9ff",
+                    "on-primary-container": "#fdfcff",
+                    "surface-container-low": "#f1f3ff",
+                    "on-background": "#141b2b",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "md": "24px",
+                    "xl": "64px",
+                    "lg": "40px",
+                    "container-max": "1280px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "display": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-sm": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(77, 130, 195, 0.08);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f9f9ff 0%, #e9edff 100%);
+        }
+        .ambient-shadow {
+            box-shadow: 0 20px 40px -15px rgba(77, 130, 195, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed font-body-md text-body-md docked full-width top-0 shadow-sm dark:bg-surface-container shadow-sm sticky z-50">
+<div class="flex justify-between items-center w-full px-lg py-sm max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">
+                    MyTransfer
+                </div>
+<nav class="hidden md:flex gap-md">
+<!-- Transfer is active since this is the landing/hero emphasizing transfer -->
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed font-semibold pb-1 cursor-pointer active:opacity-80" href="#">
+                        Transfer
+                    </a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer active:opacity-80 pb-1 border-b-2 border-transparent" href="#">
+                        Activity
+                    </a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer active:opacity-80 pb-1 border-b-2 border-transparent" href="#">
+                        Workspaces
+                    </a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer active:opacity-80 pb-1 border-b-2 border-transparent" href="#">
+                        Contacts
+                    </a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center gap-sm">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-md py-xs rounded-xl transition-colors shadow-sm">
+                    Send Files
+                </button>
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a young professional in a brightly lit modern office. Soft, high-key lighting creates a clean, corporate aesthetic. The subject is wearing a crisp white shirt, exuding confidence and approachability, against a blurred, light-mode background with subtle blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClFQcLZSdDvj2ZHUVRoEIbngUXgdf4-bPBy-pEqDlkvJpPsaAu4wm2gXO8Sq6T27kG124cp8_7ZTUEu6j82_9ZbT-l2anVeOk5wI-ZbNvjz8LsG1N5S17XYHEnR-wdFHkcuEPmLeLroDxS_JT0VzEDC1ajNWpKNZ8RPZzATp89kNtn8Wrs1btXRzJWmLP07WPhx6M6YPEA2ZwHYZerIt24gIM-0heIKH1u8KqPHxhz8bALGUgJ-7JfvR7SLWYniZAWF5q8r-j2Vrc"/>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="hero-gradient pt-xl pb-32 px-md md:px-lg relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-primary-fixed opacity-20 blur-3xl -z-10 rounded-l-full transform translate-x-1/4 -translate-y-1/4"></div>
+<div class="absolute bottom-0 left-0 w-1/3 h-1/2 bg-secondary-container opacity-20 blur-3xl -z-10 rounded-r-full transform -translate-x-1/4 translate-y-1/4"></div>
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center pt-lg">
+<!-- Hero Copy -->
+<div class="flex flex-col gap-md z-10">
+<div class="inline-flex items-center gap-xs bg-surface-container-high text-primary font-label-sm text-label-sm px-sm py-xs rounded-full w-fit mb-sm border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+                        Enterprise-Grade Speed
+                    </div>
+<h1 class="font-display text-display text-on-surface lg:text-[64px] lg:leading-[72px] tracking-tight">
+                        Transfer Files <br/><span class="text-primary">Without Limits</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Secure, fast, and intelligent file delivery for professionals. Experience frictionless sharing with advanced tracking and military-grade encryption.
+                    </p>
+<div class="flex flex-wrap gap-sm mt-md">
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-lg py-sm rounded-xl transition-all shadow-sm hover:shadow-md flex items-center gap-xs group">
+                            Start Transfer
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="bg-surface hover:bg-surface-container text-primary font-label-md text-label-md px-lg py-sm rounded-xl transition-all border border-outline-variant flex items-center gap-xs">
+                            View Pricing
+                        </button>
+</div>
+<div class="mt-xl flex items-center gap-md text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex -space-x-3">
+<img class="w-8 h-8 rounded-full border-2 border-surface object-cover" data-alt="Close up portrait of a smiling woman in a bright modern office. Clean corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMD1Q7zM7hhWK-xi98q5_1CTER9-2qhk9LYrVcjqURWGRjwAAFAj2pdaZ-g9XysPNCp2K7cA9_fYBICIXIPel1r1x00Z_ds8GB2cmhT3H1WaBkQNkjqJwmCMwefGofMpnM4c2Oh_TUZBi-E6b26zn0ncrBFL176jRqypw5-nDzoBlRuA_4wWLyaP0-rmt3-rzK3_TCnfQDL2CDGOK85UFHJ2OkEiK3_rgQKa5mBdI1nAiX1HUwXZJjvmwbM1dMg-YlvXvdg5tTfQ8"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface object-cover" data-alt="Close up portrait of a focused man in a bright modern office. Clean corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLnp7RuqpzWkO22odetJYNxJKqDFCRb863OmVVni0IcE4cPmHl6or_ktdYKLhVLBG1E8hs__SIaLrP9y2aTRIRqjIOLsUjd3ME-IiCGdRBe8Mm4EwcF3dT4lC2s-uNXDKryFEp1KITK6xus87DNmVcTE6uEBd06UThRN3mxmiJiijaf-zGe4hSd6wpFnQUEEIhjM2NH-J5u_xuooz4HSHYBNlqHEnBKFXV5z9AZoPZHbKck3if_biLxp4NJEezBaBKzV2TDOrh5Fw"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface object-cover" data-alt="Close up portrait of a professional looking directly at camera. Clean corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKW4To-9t5fG7KthixS9gckXU0afkIcB3o21HOb7n_BItM9-ycSOyHVzlfASDCh1OTpp9QpFNyP0XKJK7eNPMgN-p3dXPIyfCyV09R2OYVsMGOSTFPN3UpK1az4QSADK03myipBkyyqOb_IPUKZ683bwQh9y2uq4NahhsviD8hxs7cdpQarvrC0k4OP6BDhGw-29-OvNy_degt7BQTNY6pe5QOl1hC3gpQaTL_Rz-HGfG3F6GFvIzWiCyscAHuTpQCCBQzp4XFEc8"/>
+</div>
+<p>Trusted by 10,000+ teams worldwide</p>
+</div>
+</div>
+<!-- Hero Upload Widget -->
+<div class="relative z-10 w-full max-w-md mx-auto lg:ml-auto">
+<div class="glass-card rounded-[24px] p-md flex flex-col gap-md ambient-shadow transform transition-transform hover:-translate-y-1 duration-300">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Send files securely</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- Drag & Drop Zone -->
+<div class="border-2 border-dashed border-outline-variant hover:border-primary bg-surface/50 hover:bg-[#F0F7FF] transition-colors rounded-xl p-xl flex flex-col items-center justify-center gap-sm text-center cursor-pointer group h-64">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300 shadow-sm">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Drag and drop files here</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">or click to browse from your computer</p>
+</div>
+<p class="font-label-sm text-label-sm text-outline mt-2">Up to 250GB per transfer</p>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">mail</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-sm pl-xl pr-sm text-body-sm font-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Email to (optional)" type="email"/>
+</div>
+<button class="w-full bg-surface-container-high text-on-surface-variant hover:bg-primary hover:text-on-primary font-label-md text-label-md py-sm rounded-lg transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">link</span>
+                                Get a link instead
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tracking Highlight Section (Bento Grid Style) -->
+<section class="py-xl px-md md:px-lg bg-surface">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-xl max-w-2xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Know exactly where your files go.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Intelligent tracking gives you complete visibility. Know who, when, and where your files are downloaded in real-time.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Bento Box 1: Real-time Map -->
+<div class="md:col-span-2 glass-card rounded-[24px] p-md overflow-hidden relative min-h-[300px] flex flex-col justify-between group">
+<div class="z-10">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-sm shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">travel_explore</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Global Download Heatmap</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Visualize global reach instantly. See precise geolocation data for every recipient access point.</p>
+</div>
+<!-- Abstract Map Visual Placeholder -->
+<div class="absolute bottom-0 right-0 w-3/4 h-3/4 opacity-40 group-hover:opacity-60 transition-opacity duration-500 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxjaXJjbGUgY3g9IjgwJSIgY3k9IjYwJSIgcj0iNTAlIiBmaWxsPSIjNDBEODJDMzE1Ii8+PC9zdmc+')] bg-no-repeat bg-right-bottom"></div>
+<!-- Simulated UI overlay -->
+<div class="absolute bottom-md right-md bg-surface p-sm rounded-xl shadow-md border border-outline-variant/30 z-10 flex items-center gap-sm">
+<img class="w-10 h-10 rounded bg-surface-container object-cover" data-alt="Small thumbnail image of a design presentation file cover showing modern UI design elements in a light mode palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKMLJGGQJuM9p6wewGpWV-VsNHqbtc7Dpiqrna3_VUghOv-cf8i1YvEyOr10YZP_671gVziFhfHC1zYQNOOSvyLS-oYIopTlCmvDkJKuro5MAhX23jGv8-zJRYi9Y7NbqaRZOzG9O0ohs18XHr6uDWzqXf0Sxvzuv2v1o_D3M6ZQePO_4FdH5uv7_eUeVN7wyAORvZ9Z9FGW2EeZLsX7JeewxoAe3J0WEB6-dgJxjciJ_r_ut67PCO07FjuUaZ2zBINugt9Lnbh6Y"/>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">Q3_Report.pdf</p>
+<p class="font-body-sm text-[11px] text-primary flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[12px]">location_on</span> London, UK • Just now
+                                </p>
+</div>
+</div>
+</div>
+<!-- Bento Box 2: Audit Log -->
+<div class="glass-card rounded-[24px] p-md flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface mb-sm shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Granular Audit Logs</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Timestamped records of every view, download, and forward.</p>
+</div>
+<div class="mt-md bg-surface-container-low rounded-xl p-sm border border-outline-variant/20">
+<div class="flex items-start gap-sm mb-xs pb-xs border-b border-outline-variant/20">
+<div class="w-2 h-2 rounded-full bg-primary mt-1.5"></div>
+<div>
+<p class="font-label-sm text-[12px] text-on-surface">Downloaded by client@acme.co</p>
+<p class="font-body-sm text-[11px] text-outline">10:42 AM PST</p>
+</div>
+</div>
+<div class="flex items-start gap-sm">
+<div class="w-2 h-2 rounded-full bg-secondary-container mt-1.5"></div>
+<div>
+<p class="font-label-sm text-[12px] text-on-surface">Viewed by client@acme.co</p>
+<p class="font-body-sm text-[11px] text-outline">10:38 AM PST</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-xl px-md md:px-lg bg-surface-container-low border-t border-outline-variant/20">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Feature 1 -->
+<div class="flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary shadow-sm mb-xs">
+<span class="material-symbols-outlined text-[24px]">radar</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Intelligent Tracking</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Beyond simple delivery receipts. Get deep insights into engagement, forward chains, and geographic distribution of your sensitive assets.</p>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface shadow-sm mb-xs">
+<span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Cloudflare R2 Speed</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Powered by distributed edge networks. Experience zero-egress fee transfers that saturate your bandwidth, delivering gigabytes in seconds.</p>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary shadow-sm mb-xs">
+<span class="material-symbols-outlined text-[24px]">shield_lock</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Enterprise Security</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">End-to-end AES-256 encryption. Set granular access controls, password protection, and auto-expiring links to ensure data sovereignty.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

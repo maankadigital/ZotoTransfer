@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing - MyTransfer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-container": "#e9edff",
+                        "tertiary": "#355e89",
+                        "surface-container-high": "#e1e8fd",
+                        "secondary-container": "#90beff",
+                        "on-primary-fixed-variant": "#004882",
+                        "on-primary-container": "#fdfcff",
+                        "on-secondary-fixed": "#001c39",
+                        "on-tertiary-fixed-variant": "#1c4973",
+                        "on-secondary-container": "#114c86",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#424750",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#fdfcff",
+                        "background": "#f9f9ff",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d3daef",
+                        "tertiary-container": "#4f77a4",
+                        "primary-fixed-dim": "#a3c9ff",
+                        "inverse-primary": "#a3c9ff",
+                        "surface-container-low": "#f1f3ff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dce2f7",
+                        "surface-tint": "#25609f",
+                        "outline-variant": "#c2c6d2",
+                        "primary-container": "#4077b7",
+                        "inverse-surface": "#293040",
+                        "tertiary-fixed-dim": "#a1cafb",
+                        "secondary": "#2d609b",
+                        "surface-container-highest": "#dce2f7",
+                        "on-secondary-fixed-variant": "#074882",
+                        "on-tertiary-fixed": "#001d36",
+                        "on-background": "#141b2b",
+                        "tertiary-fixed": "#d1e4ff",
+                        "outline": "#727781",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f9f9ff",
+                        "on-surface": "#141b2b",
+                        "on-primary": "#ffffff",
+                        "primary": "#225e9c",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d3e3ff",
+                        "on-primary-fixed": "#001c39"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "xs": "8px",
+                        "lg": "40px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "xl": "64px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(var(--tw-colors-outline-variant) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-dim shadow-sm sticky top-0 z-50 transition-all duration-200 ease-in-out">
+<div class="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto">
+<div class="text-headline-md font-display font-bold text-primary dark:text-primary-fixed-dim">
+                MyTransfer
+            </div>
+<div class="hidden md:flex space-x-md">
+<a class="text-on-surface-variant dark:text-surface-variant font-display text-body-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Features</a>
+<a class="text-primary dark:text-primary-fixed font-semibold border-b-2 border-primary font-display text-body-md transition-colors" href="#">Pricing</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-display text-body-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Enterprise</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-display text-body-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">About</a>
+</div>
+<div class="flex items-center space-x-sm">
+<a class="text-primary dark:text-primary-fixed font-display text-label-md hover:text-primary-fixed-dim transition-colors" href="#">Sign In</a>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md hover:bg-primary-container transition-colors">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center justify-center py-xl px-sm relative overflow-hidden bg-pattern">
+<!-- Background Glows -->
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary rounded-full mix-blend-multiply filter blur-[100px] opacity-10 pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary rounded-full mix-blend-multiply filter blur-[100px] opacity-10 pointer-events-none"></div>
+<div class="max-w-container-max w-full z-10 flex flex-col items-center">
+<div class="text-center mb-lg">
+<h1 class="font-display text-display text-on-background mb-sm">Choose the plan that's right for you</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Scale your file sharing capabilities with simple, transparent pricing built for professionals and teams.</p>
+</div>
+<!-- Toggle -->
+<div class="flex items-center justify-center space-x-4 mb-xl bg-surface-container-low p-2 rounded-full border border-outline-variant shadow-sm">
+<button class="px-6 py-2 rounded-full font-label-md bg-primary text-on-primary shadow-sm transition-all duration-300">Monthly</button>
+<button class="px-6 py-2 rounded-full font-label-md text-on-surface-variant hover:text-primary transition-all duration-300">Yearly <span class="text-xs bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full ml-2">Save 20%</span></button>
+</div>
+<!-- Pricing Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md w-full">
+<!-- FREE -->
+<div class="bg-surface rounded-[24px] p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+<div class="mb-sm">
+<h3 class="font-headline-sm text-on-background">FREE</h3>
+<div class="mt-2 flex items-baseline text-on-background">
+<span class="font-display text-display">$0</span>
+<span class="font-body-sm text-on-surface-variant ml-1">/mo</span>
+</div>
+<p class="font-body-sm text-on-surface-variant mt-2">For occasional simple transfers.</p>
+</div>
+<button class="w-full py-3 rounded-lg border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors mb-lg mt-auto">Get Started</button>
+<div class="flex-grow">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Up to 2GB per transfer</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Transfers expire in 7 days</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-outline-variant text-xl mr-2">remove</span>
+<span class="font-body-sm text-on-surface-variant line-through">Password protection</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-outline-variant text-xl mr-2">remove</span>
+<span class="font-body-sm text-on-surface-variant line-through">Custom branding</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- PRO -->
+<div class="bg-surface rounded-[24px] p-md border-2 border-primary shadow-lg relative flex flex-col h-full transform lg:-translate-y-4">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-on-primary font-label-sm px-4 py-1 rounded-full uppercase tracking-wider">
+                        Most Popular
+                    </div>
+<div class="mb-sm">
+<h3 class="font-headline-sm text-primary">PRO</h3>
+<div class="mt-2 flex items-baseline text-on-background">
+<span class="font-display text-display">$12</span>
+<span class="font-body-sm text-on-surface-variant ml-1">/mo</span>
+</div>
+<p class="font-body-sm text-on-surface-variant mt-2">For professionals sending large files regularly.</p>
+</div>
+<button class="w-full py-3 rounded-lg bg-primary text-on-primary font-label-md hover:bg-primary-container transition-colors mb-lg mt-auto shadow-sm">Get Started</button>
+<div class="flex-grow">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Up to 200GB per transfer</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">1TB storage</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Password protection</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Custom branding</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- BUSINESS -->
+<div class="bg-surface rounded-[24px] p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+<div class="mb-sm">
+<h3 class="font-headline-sm text-on-background">BUSINESS</h3>
+<div class="mt-2 flex items-baseline text-on-background">
+<span class="font-display text-display">$30</span>
+<span class="font-body-sm text-on-surface-variant ml-1">/mo</span>
+</div>
+<p class="font-body-sm text-on-surface-variant mt-2">For small teams requiring collaboration.</p>
+</div>
+<button class="w-full py-3 rounded-lg border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors mb-lg mt-auto">Get Started</button>
+<div class="flex-grow">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Unlimited transfer size</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">5TB shared storage</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Team workspaces</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Advanced Analytics</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- ENTERPRISE -->
+<div class="bg-surface rounded-[24px] p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+<div class="mb-sm">
+<h3 class="font-headline-sm text-on-background">ENTERPRISE</h3>
+<div class="mt-2 flex items-baseline text-on-background">
+<span class="font-display text-headline-lg mt-3">Custom</span>
+</div>
+<p class="font-body-sm text-on-surface-variant mt-3">For large organizations with strict security needs.</p>
+</div>
+<button class="w-full py-3 rounded-lg border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors mb-lg mt-auto">Contact Sales</button>
+<div class="flex-grow">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Unlimited everything</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">SSO Integration</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Dedicated account manager</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-xl mr-2 icon-fill">check_circle</span>
+<span class="font-body-sm text-on-background">Custom SLA</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-on-background border-t border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg py-md max-w-container-max mx-auto">
+<div class="text-label-md font-bold text-primary mb-4 md:mb-0">
+                © 2024 MyTransfer Inc. All rights reserved.
+            </div>
+<div class="flex space-x-6">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Security</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Status</a>
+</div>
+</div>
+</footer>
+</body></html>

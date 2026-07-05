@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyTransfer - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-container": "#e9edff",
+                        "tertiary": "#355e89",
+                        "surface-container-high": "#e1e8fd",
+                        "secondary-container": "#90beff",
+                        "on-primary-fixed-variant": "#004882",
+                        "on-primary-container": "#fdfcff",
+                        "on-secondary-fixed": "#001c39",
+                        "on-tertiary-fixed-variant": "#1c4973",
+                        "on-secondary-container": "#114c86",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#424750",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#fdfcff",
+                        "background": "#f9f9ff",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d3daef",
+                        "tertiary-container": "#4f77a4",
+                        "primary-fixed-dim": "#a3c9ff",
+                        "inverse-primary": "#a3c9ff",
+                        "surface-container-low": "#f1f3ff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dce2f7",
+                        "surface-tint": "#25609f",
+                        "outline-variant": "#c2c6d2",
+                        "primary-container": "#4077b7",
+                        "inverse-surface": "#293040",
+                        "tertiary-fixed-dim": "#a1cafb",
+                        "secondary": "#2d609b",
+                        "surface-container-highest": "#dce2f7",
+                        "on-secondary-fixed-variant": "#074882",
+                        "on-tertiary-fixed": "#001d36",
+                        "on-background": "#141b2b",
+                        "tertiary-fixed": "#d1e4ff",
+                        "outline": "#727781",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f9f9ff",
+                        "on-surface": "#141b2b",
+                        "on-primary": "#ffffff",
+                        "primary": "#225e9c",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d3e3ff",
+                        "on-primary-fixed": "#001c39"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "xs": "8px",
+                        "lg": "40px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "xl": "64px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid #e2e8f0; border-radius: 24px; box-shadow: 0 10px 25px -5px rgba(77, 130, 195, 0.08); }
+        .ambient-shadow { box-shadow: 0 4px 15px rgba(77, 130, 195, 0.08); }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-inverse-surface docked left-0 h-full w-64 flat flex flex-col h-screen p-md gap-sm hidden md:flex z-10 shrink-0">
+<!-- Header -->
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg shadow-sm">M</div>
+<div>
+<h1 class="text-headline-sm font-display font-bold text-primary dark:text-primary-fixed">MyTransfer</h1>
+<p class="text-label-sm text-on-surface-variant font-medium">Pro Workspace</p>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary text-on-primary rounded-[12px] py-3 px-4 font-label-md hover:bg-primary-container transition-colors shadow-sm flex items-center justify-center gap-2 mb-md group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+            New Transfer
+        </button>
+<!-- Navigation Tabs -->
+<div class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg scale-98 active:scale-95 transition-transform group font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg scale-98 active:scale-95 transition-transform group font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">sync_alt</span>
+<span class="font-medium">Transfers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg scale-98 active:scale-95 transition-transform group font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">folder</span>
+<span class="font-medium">Files</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg scale-98 active:scale-95 transition-transform group font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">group</span>
+<span class="font-medium">Team</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg scale-98 active:scale-95 transition-transform group font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</div>
+<!-- Footer Tabs -->
+<div class="flex flex-col gap-1 mt-auto pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg scale-98 active:scale-95 transition-transform group font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors text-lg">help</span>
+<span>Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg scale-98 active:scale-95 transition-transform group font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors text-lg">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto w-full relative">
+<div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#225e9c 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="max-w-container-max mx-auto px-lg py-lg md:py-xl relative z-10 w-full h-full flex flex-col gap-lg">
+<!-- Header Section -->
+<header class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Welcome back, Sarah</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Here's what's happening with your transfers today.</p>
+</div>
+<div class="hidden md:flex gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 rounded-[12px] border border-[#e2e8f0] bg-white focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-sm w-64 shadow-sm text-on-surface placeholder:text-outline-variant" placeholder="Search files..." type="text"/>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="A professional headshot of a woman in a bright, modern office setting, smiling subtly. Light mode aesthetic with soft, high-key lighting emphasizing a clean, approachable corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIQbeG-f_1MzfAOXd52CdsE0vVD5M1B-B5EeJpTwV3B5ybRfsmySmlanJgUGIz9S0gM5XGWfbbLHY929Vh6rPrLHgCDRE0QzzLaeW13K6hFaEi-HGnbiw7M1ecLRRojnCbwLdHEH6sEaRJeRdHBGL5Va8cV0NDUZVcsEdRGqXmB2e0J5sIBPTcF6whotonAq35MGYsKxMYYrBniWjOmVXKsvS2N__GCJLd1C4P3bpdElMm5_QkEiTfctn0d5qiycTN5zLfIL3-THs"/>
+</div>
+</header>
+<!-- Storage Progress -->
+<section class="glass-card p-md w-full bg-white/80">
+<div class="flex justify-between items-end mb-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Storage Usage</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">45 GB of 100 GB used in Pro Workspace</p>
+</div>
+<span class="font-label-md text-label-md text-primary bg-primary-container px-3 py-1 rounded-full">45%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2 relative overflow-hidden">
+<div class="absolute left-0 top-0 h-full rounded-full transition-all duration-1000 ease-out" style="width: 45%; background: linear-gradient(90deg, #4D82C3 0%, #7FA7D6 100%);"></div>
+</div>
+</section>
+<!-- Summary Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md w-full">
+<!-- Card 1 -->
+<div class="glass-card p-md bg-white hover:-translate-y-1 transition-transform duration-300 group">
+<div class="flex items-center justify-between mb-lg">
+<div class="w-12 h-12 rounded-[16px] bg-[#f0f7ff] flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+</div>
+<span class="text-secondary font-label-sm text-label-sm flex items-center bg-secondary-container/30 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-sm mr-1">arrow_upward</span> 12%
+                        </span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Total Storage Used</p>
+<h4 class="font-headline-lg text-headline-lg text-on-surface">45 GB</h4>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-md bg-white hover:-translate-y-1 transition-transform duration-300 group">
+<div class="flex items-center justify-between mb-lg">
+<div class="w-12 h-12 rounded-[16px] bg-[#f0f7ff] flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">sync</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm bg-surface-container px-2 py-1 rounded-md">
+                            Active
+                        </span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Active Transfers</p>
+<h4 class="font-headline-lg text-headline-lg text-on-surface">8</h4>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-md bg-white hover:-translate-y-1 transition-transform duration-300 group">
+<div class="flex items-center justify-between mb-lg">
+<div class="w-12 h-12 rounded-[16px] bg-[#f0f7ff] flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">download</span>
+</div>
+<span class="text-secondary font-label-sm text-label-sm flex items-center bg-secondary-container/30 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-sm mr-1">arrow_upward</span> 5%
+                        </span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Total Downloads</p>
+<h4 class="font-headline-lg text-headline-lg text-on-surface">1,204</h4>
+</div>
+</div>
+</div>
+<!-- Recent Transfers Table -->
+<section class="glass-card flex-1 bg-white flex flex-col overflow-hidden">
+<div class="px-md py-sm border-b border-outline-variant/30 flex justify-between items-center bg-white/50 backdrop-blur-sm sticky top-0 z-10">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Transfers</h3>
+<button class="text-primary font-label-md hover:underline flex items-center gap-1">
+                        View All <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm border-b border-outline-variant/30">
+<th class="px-md py-3 font-medium rounded-tl-[24px]">File Name</th>
+<th class="px-md py-3 font-medium">Recipient</th>
+<th class="px-md py-3 font-medium">Date</th>
+<th class="px-md py-3 font-medium">Status</th>
+<th class="px-md py-3 font-medium text-right rounded-tr-[24px]">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm">
+<tr class="hover:bg-surface-container-lowest/50 transition-colors group">
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-[#f1f5f9] flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</div>
+<div>
+<p class="font-medium text-on-surface">Q3_Financial_Report.pdf</p>
+<p class="text-xs text-on-surface-variant">2.4 MB • ZIP</p>
+</div>
+</div>
+</td>
+<td class="px-md py-4 text-on-surface-variant">client@acmecorp.com</td>
+<td class="px-md py-4 text-on-surface-variant">Today, 10:42 AM</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container/20 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Active
+                                    </span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="px-4 py-2 rounded-[12px] bg-[#f1f5f9] text-on-surface font-label-sm hover:bg-surface-variant transition-colors inline-flex items-center gap-1">
+                                        Track
+                                    </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/50 transition-colors group">
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-[#f1f5f9] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">video_file</span>
+</div>
+<div>
+<p class="font-medium text-on-surface">Campaign_Video_V2.mp4</p>
+<p class="text-xs text-on-surface-variant">450 MB • MP4</p>
+</div>
+</div>
+</td>
+<td class="px-md py-4 text-on-surface-variant">marketing@team.com</td>
+<td class="px-md py-4 text-on-surface-variant">Yesterday, 3:15 PM</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container/20 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Active
+                                    </span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="px-4 py-2 rounded-[12px] bg-[#f1f5f9] text-on-surface font-label-sm hover:bg-surface-variant transition-colors inline-flex items-center gap-1">
+                                        Track
+                                    </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/50 transition-colors group opacity-70">
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-[#f1f5f9] flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">folder_zip</span>
+</div>
+<div>
+<p class="font-medium text-on-surface">Design_Assets_Archive.zip</p>
+<p class="text-xs text-on-surface-variant">1.2 GB • ZIP</p>
+</div>
+</div>
+</td>
+<td class="px-md py-4 text-on-surface-variant">external-agency@design.co</td>
+<td class="px-md py-4 text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Expired
+                                    </span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="px-4 py-2 rounded-[12px] bg-transparent text-outline font-label-sm hover:bg-[#f1f5f9] transition-colors inline-flex items-center gap-1 opacity-50 cursor-not-allowed" disabled="">
+                                        Track
+                                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Bottom Nav Placeholder (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-white border-t border-outline-variant/20 flex justify-around py-2 z-50 ambient-shadow">
+<a class="flex flex-col items-center p-2 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-medium mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">sync_alt</span>
+<span class="text-[10px] font-medium mt-1">Transfers</span>
+</a>
+<button class="w-12 h-12 -mt-6 bg-primary text-white rounded-full flex items-center justify-center shadow-lg border-4 border-background">
+<span class="material-symbols-outlined">add</span>
+</button>
+<a class="flex flex-col items-center p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] font-medium mt-1">Files</span>
+</a>
+<a class="flex flex-col items-center p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

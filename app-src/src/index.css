@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════════════════════
+   OBSIDIAN DARK THEME  –  CSS Custom Properties
+   ══════════════════════════════════════════════════════════════ */
+:root {
+  --c-bg:                  #F8FAFC;
+  --c-surface:             #F8FAFC;
+  --c-surface-bright:      #F8FAFC;
+  --c-surface-lowest:      #ffffff;
+  --c-surface-low:         #f1f3ff;
+  --c-surface-container:   #e9edff;
+  --c-surface-high:        #e1e8fd;
+  --c-surface-highest:     #dce2f7;
+  --c-surface-dim:         #d3daef;
+  --c-surface-variant:     #dce2f7;
+  --c-on-bg:               #111827;
+  --c-on-surface:          #111827;
+  --c-on-surface-variant:  #424750;
+  --c-outline:             #727781;
+  --c-outline-variant:     #c2c6d2;
+  --c-inverse-surface:     #293040;
+  --c-inverse-on-surface:  #edf0ff;
+  --c-primary:             #1A7FD4;
+  --c-primary-container:   #7FA7D6;
+  --c-on-primary-container:#fdfcff;
+  --c-primary-fixed:       #d3e3ff;
+  --c-primary-fixed-dim:   #a3c9ff;
+  --c-on-primary-fixed-variant: #004882;
+  --c-secondary:           #3B6CA8;
+  --c-secondary-container: #90beff;
+  --scrollbar-thumb:       rgba(114,119,129,0.2);
+}
+
+/* ── Obsidian dark palette ─────────────────────────────────── */
+.dark {
+  --c-bg:                  #1a1a1f;   /* Obsidian base */
+  --c-surface:             #1a1a1f;
+  --c-surface-bright:      #222228;
+  --c-surface-lowest:      #222228;   /* cards / modals */
+  --c-surface-low:         #26262d;
+  --c-surface-container:   #2b2b33;
+  --c-surface-high:        #30303a;
+  --c-surface-highest:     #363642;
+  --c-surface-dim:         #141418;
+  --c-surface-variant:     #2b2b33;
+  --c-on-bg:               #e8e8ed;
+  --c-on-surface:          #e8e8ed;
+  --c-on-surface-variant:  #9898a6;
+  --c-outline:             #5a5a68;
+  --c-outline-variant:     #38383f;
+  --c-inverse-surface:     #e2e2ea;
+  --c-inverse-on-surface:  #1a1a1f;
+  --c-primary:             #6aacf5;
+  --c-primary-container:   #1c3a5c;
+  --c-on-primary-container:#bfdbfe;
+  --c-primary-fixed:       #1c3a5c;
+  --c-primary-fixed-dim:   #2563eb;
+  --c-on-primary-fixed-variant: #93c5fd;
+  --c-secondary:           #7eb4f5;
+  --c-secondary-container: #1c3a5c;
+  --scrollbar-thumb:       rgba(160,160,180,0.15);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BODY
+   ══════════════════════════════════════════════════════════════ */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--c-bg);
+  color: var(--c-on-surface);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SMOOTH TRANSITIONS
+   ══════════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, box-shadow, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+/* Keep animations/transforms instant */
+[class*="animate-"],
+[class*="transition-transform"],
+[class*="translate-"],
+[class*="rotate-"],
+[class*="scale-"] {
+  transition-property: transform, opacity !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   OBSIDIAN DARK — GLOBAL OVERRIDES
+   Using [class*=] attribute selectors so they always win over
+   Tailwind's single-class utility specificity.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ─ Backgrounds ──────────────────────────────────────────── */
+.dark [class*="bg-white"]          { background-color: #222228 !important; }
+.dark [class*="bg-slate-50"]       { background-color: #26262d !important; }
+.dark [class*="bg-slate-100"]      { background-color: #2b2b33 !important; }
+.dark [class*="bg-slate-200"]      { background-color: #30303a !important; }
+
+/* Hardcoded hex backgrounds */
+.dark [class*="bg-\[#F8FAFC\]"]   { background-color: #1a1a1f !important; }
+.dark [class*="bg-\[#f8fafc\]"]   { background-color: #1a1a1f !important; }
+.dark [class*="bg-\[#FFFFFF\]"]   { background-color: #222228 !important; }
+
+/* ─ Text — slate scale (light → dark reversal) ───────────── */
+/*   slate-900/800/700 = primary text → white in dark          */
+/*   slate-500/400     = muted text   → light grey in dark     */
+/*   slate-300/200     = disabled     → dim but readable        */
+.dark [class*="text-slate-950"]    { color: #ffffff   !important; }
+.dark [class*="text-slate-900"]    { color: #ffffff   !important; }
+.dark [class*="text-slate-800"]    { color: #f0f0f5   !important; }
+.dark [class*="text-slate-750"]    { color: #e4e4ec   !important; }
+.dark [class*="text-slate-700"]    { color: #d8d8e4   !important; }
+.dark [class*="text-slate-650"]    { color: #c4c4d4   !important; }
+.dark [class*="text-slate-600"]    { color: #b4b4c8   !important; }
+.dark [class*="text-slate-550"]    { color: #a0a0b8   !important; }
+.dark [class*="text-slate-500"]    { color: #9090a8   !important; }
+.dark [class*="text-slate-400"]    { color: #7a7a94   !important; }
+.dark [class*="text-slate-300"]    { color: #64648a   !important; }
+.dark [class*="text-slate-200"]    { color: #505070   !important; }
+
+/* gray-* (same logic) */
+.dark [class*="text-gray-900"]     { color: #ffffff   !important; }
+.dark [class*="text-gray-800"]     { color: #f0f0f5   !important; }
+.dark [class*="text-gray-700"]     { color: #d8d8e4   !important; }
+.dark [class*="text-gray-600"]     { color: #b4b4c8   !important; }
+.dark [class*="text-gray-500"]     { color: #9090a8   !important; }
+
+/* ─ Borders ───────────────────────────────────────────────── */
+.dark [class*="border-slate-200"]  { border-color: #38383f !important; }
+.dark [class*="border-slate-100"]  { border-color: #2b2b33 !important; }
+.dark [class*="border-slate-300"]  { border-color: #45454f !important; }
+
+/* White/transparent borders */
+.dark [class*="border-white"]      { border-color: rgba(80,80,100,0.5) !important; }
+
+/* ─ Hover states ─────────────────────────────────────────── */
+.dark [class*="hover:bg-slate-50"]:hover   { background-color: #26262d !important; }
+.dark [class*="hover:bg-slate-100"]:hover  { background-color: #2b2b33 !important; }
+.dark [class*="hover:bg-white"]:hover      { background-color: #30303a !important; }
+.dark [class*="hover:border-slate-300"]:hover { border-color: #45454f !important; }
+
+/* ─ Shadows ───────────────────────────────────────────────── */
+.dark [class*="shadow-xl"]  { box-shadow: 0 20px 60px -12px rgba(0,0,0,0.6) !important; }
+.dark [class*="shadow-lg"]  { box-shadow: 0 10px 40px -8px  rgba(0,0,0,0.5) !important; }
+.dark [class*="shadow-md"]  { box-shadow: 0 4px  20px -4px  rgba(0,0,0,0.4) !important; }
+.dark [class*="shadow-sm"]  { box-shadow: 0 2px  10px -2px  rgba(0,0,0,0.35) !important; }
+
+/* ─ Footer ───────────────────────────────────────────────── */
+.dark [class*="bg-slate-900"] { background-color: #0f0f13 !important; }
+.dark [class*="bg-slate-800"] { background-color: #1a1a1f !important; }
+.dark [class*="border-slate-800"] { border-color: #2b2b33 !important; }
+
+/* ─ Pricing section background ────────────────────────────── */
+.dark [class*="bg-\[#E3EFFD\]"] { background-color: #1c3a5c !important; color: #6aacf5 !important; }
+
+/* ─ Red hover (logout etc.) ──────────────────────────────── */
+.dark [class*="hover:bg-red-50"]:hover { background-color: rgba(127,29,29,0.2) !important; }
+
+/* ─ Emerald/green ─────────────────────────────────────────── */
+.dark [class*="bg-emerald-100"] { background-color: rgba(6,78,59,0.3) !important; }
+
+/* ─ Glassmorphism sidebar ────────────────────────────────── */
+.dark [class*="bg-white/40"] { background-color: rgba(34,34,40,0.7) !important; }
+.dark [class*="bg-white/60"] { background-color: rgba(34,34,40,0.8) !important; }
+.dark [class*="bg-white/80"] { background-color: rgba(34,34,40,0.9) !important; }
+.dark [class*="bg-white/90"] { background-color: rgba(34,34,40,0.95) !important; }
+
+/* ══════════════════════════════════════════════════════════════
+   GLASS CARD
+   ══════════════════════════════════════════════════════════════ */
+.glass-card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226,232,240,0.8);
+  box-shadow: 0 10px 30px -10px rgba(26,127,212,0.08);
+}
+.dark .glass-card {
+  background: rgba(34,34,40,0.88);
+  border-color: rgba(56,56,63,0.9);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HERO GRADIENT
+   ══════════════════════════════════════════════════════════════ */
+.hero-gradient {
+  background: linear-gradient(135deg, #f9f9ff 0%, #e4eeff 100%);
+}
+.dark .hero-gradient {
+  background: linear-gradient(135deg, #1a1a1f 0%, #1e1e26 100%);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   AMBIENT SHADOW / INPUT GLOW / PROGRESS
+   ══════════════════════════════════════════════════════════════ */
+.ambient-shadow { box-shadow: 0 20px 40px -15px rgba(26,127,212,0.14); }
+.dark .ambient-shadow { box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6); }
+
+.input-glow:focus-within {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 4px rgba(26,127,212,0.18);
+}
+.dark .input-glow:focus-within {
+  box-shadow: 0 0 0 4px rgba(106,172,245,0.2);
+}
+
+@keyframes progress-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.progress-active {
+  background: linear-gradient(90deg, var(--c-primary) 25%, #93c5fd 50%, var(--c-primary) 75%);
+  background-size: 200% 100%;
+  animation: progress-shimmer 2s infinite linear;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+   ══════════════════════════════════════════════════════════════ */
+
+/* Base hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Variants */
+.reveal-left  { opacity: 0; transform: translateX(-36px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+.reveal-right { opacity: 0; transform: translateX( 36px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+.reveal-scale { opacity: 0; transform: scale(0.92);       transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+.reveal-fade  { opacity: 0;                                transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1); }
+
+/* Visible state — applied by IntersectionObserver */
+.reveal.is-visible       { opacity: 1; transform: translateY(0); }
+.reveal-left.is-visible  { opacity: 1; transform: translateX(0); }
+.reveal-right.is-visible { opacity: 1; transform: translateX(0); }
+.reveal-scale.is-visible { opacity: 1; transform: scale(1); }
+.reveal-fade.is-visible  { opacity: 1; }
+
+/* Stagger delays (applied via data-delay or explicit classes) */
+.delay-100 { transition-delay: 100ms !important; }
+.delay-150 { transition-delay: 150ms !important; }
+.delay-200 { transition-delay: 200ms !important; }
+.delay-300 { transition-delay: 300ms !important; }
+.delay-400 { transition-delay: 400ms !important; }
+.delay-500 { transition-delay: 500ms !important; }
+.delay-600 { transition-delay: 600ms !important; }
+.delay-700 { transition-delay: 700ms !important; }
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SCROLLBARS
+   ══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(114,119,129,0.4); }

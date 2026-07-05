@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyTransfer - File Upload &amp; Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#727781",
+                      "surface-container-highest": "#dce2f7",
+                      "secondary": "#2d609b",
+                      "on-secondary-fixed": "#001c39",
+                      "tertiary-container": "#4f77a4",
+                      "primary": "#225e9c",
+                      "on-secondary-container": "#114c86",
+                      "on-surface": "#141b2b",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#d3e3ff",
+                      "tertiary-fixed-dim": "#a1cafb",
+                      "surface-tint": "#25609f",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#074882",
+                      "on-surface-variant": "#424750",
+                      "surface-variant": "#dce2f7",
+                      "on-primary-fixed-variant": "#004882",
+                      "surface": "#f9f9ff",
+                      "surface-dim": "#d3daef",
+                      "on-primary-fixed": "#001c39",
+                      "surface-container": "#e9edff",
+                      "primary-fixed-dim": "#a3c9ff",
+                      "surface-container-high": "#e1e8fd",
+                      "secondary-fixed-dim": "#a4c9ff",
+                      "inverse-on-surface": "#edf0ff",
+                      "secondary-container": "#90beff",
+                      "outline-variant": "#c2c6d2",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#293040",
+                      "on-tertiary-fixed": "#001d36",
+                      "background": "#f9f9ff",
+                      "surface-bright": "#f9f9ff",
+                      "tertiary": "#355e89",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#d4e3ff",
+                      "tertiary-fixed": "#d1e4ff",
+                      "primary-container": "#4077b7",
+                      "on-tertiary-fixed-variant": "#1c4973",
+                      "on-tertiary-container": "#fdfcff",
+                      "inverse-primary": "#a3c9ff",
+                      "on-primary-container": "#fdfcff",
+                      "surface-container-low": "#f1f3ff",
+                      "on-background": "#141b2b",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "card": "24px",
+                      "button": "12px"
+              },
+              "spacing": {
+                      "sm": "16px",
+                      "md": "24px",
+                      "xl": "64px",
+                      "lg": "40px",
+                      "container-max": "1280px",
+                      "base": "4px",
+                      "gutter": "24px",
+                      "xs": "8px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter", "sans-serif"],
+                      "headline-lg": ["Inter", "sans-serif"],
+                      "headline-sm": ["Inter", "sans-serif"],
+                      "headline-lg-mobile": ["Inter", "sans-serif"],
+                      "headline-md": ["Inter", "sans-serif"],
+                      "body-lg": ["Inter", "sans-serif"],
+                      "label-md": ["Inter", "sans-serif"],
+                      "display": ["Inter", "sans-serif"],
+                      "label-sm": ["Inter", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              },
+              "boxShadow": {
+                  "ambient": "0 10px 25px -5px rgba(77, 130, 195, 0.08), 0 8px 10px -6px rgba(77, 130, 195, 0.08)",
+                  "ambient-hover": "0 20px 25px -5px rgba(77, 130, 195, 0.12), 0 10px 10px -5px rgba(77, 130, 195, 0.12)",
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        /* Modern Minimalist / Glassmorphic Custom Styles */
+        body {
+            background-color: #F8FAFC; /* Level 0 Background */
+        }
+        
+        .ambient-shadow {
+            box-shadow: 0 10px 25px -5px rgba(77, 130, 195, 0.08), 0 8px 10px -6px rgba(77, 130, 195, 0.08);
+        }
+        
+        .ambient-shadow-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(77, 130, 195, 0.12), 0 10px 10px -5px rgba(77, 130, 195, 0.12);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        .input-glow:focus-within {
+            border-color: #4D82C3;
+            box-shadow: 0 0 0 4px rgba(77, 130, 195, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        /* Progress Bar Animation */
+        @keyframes progress-shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .progress-active {
+            background: linear-gradient(90deg, #4D82C3 25%, #7FA7D6 50%, #4D82C3 75%);
+            background-size: 200% 100%;
+            animation: progress-shimmer 2s infinite linear;
+        }
+        
+        /* Dashed Drop Zone */
+        .drop-zone-active {
+            background-color: #F0F7FF;
+            border-color: #4D82C3;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface h-full flex flex-col antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface shadow-sm z-50 sticky top-0">
+<div class="flex justify-between items-center w-full px-lg py-sm max-w-container-max mx-auto">
+<!-- Brand / Logo -->
+<div class="flex items-center gap-md">
+<a class="text-headline-md font-headline-md font-bold text-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send_and_archive</span>
+                    MyTransfer
+                </a>
+</div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-primary border-b-2 border-primary font-semibold pb-1 cursor-pointer active:opacity-80 transition-colors" href="#">Transfer</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80" href="#">Activity</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80" href="#">Workspaces</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80" href="#">Contacts</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-md">
+<!-- Icon Actions -->
+<div class="hidden sm:flex items-center gap-sm text-on-surface-variant">
+<button class="hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<!-- Primary Action -->
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-button hover:bg-primary-container transition-colors cursor-pointer active:opacity-80 hidden sm:block">
+                    Send Files
+                </button>
+<!-- Profile Avatar -->
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant shrink-0 cursor-pointer">
+<img alt="User profile" class="h-full w-full object-cover" data-alt="A professional headshot of a person looking slightly off-camera, modern minimal background with soft bright lighting, sharp focus, corporate tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS27zNCMxKzWNutZmOsmC5l-3y2tBDRe9p5rMQ9nMdMqWHTXmZyeN5wRxmUlgNY5ebPAvoDk_sy6lluZjSAge0z-WFMlOtMpFBVam8xACZCkWkkhgmnv7zebfnpN1T0gro8BDfPzpaGD7gPOy-8VCiCpvuceWXMwa9ZCoGlTw1qO5XU04isub6VV0sc_Rrf4jClYa7hpSEbjMgCA1XB4I4eNSbH8gJMcjUaoHRco_Mf0Nlo_GXgb_FLA6eCELaQ3-NTpxPbrAQmq8"/>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-sm md:px-md lg:px-lg py-lg md:py-xl grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: File Canvas & Upload Area (8 cols on desktop) -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-md">
+<header class="mb-sm">
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Transfer Files</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Upload and configure your files for secure delivery.</p>
+</header>
+<!-- Drop Zone -->
+<div class="border-2 border-dashed border-outline-variant rounded-card bg-surface-container-lowest flex flex-col items-center justify-center py-xl px-md text-center transition-colors hover:border-primary-container hover:bg-[#F8FAFC] cursor-pointer group" id="drop-zone">
+<div class="h-16 w-16 bg-surface-container-low rounded-full flex items-center justify-center mb-sm group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Drag &amp; drop files here</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-md">or click to browse from your computer</p>
+<button class="bg-surface-container-high text-on-surface font-label-md text-label-md px-6 py-2 rounded-button hover:bg-surface-container-highest transition-colors">
+                    Browse Files
+                </button>
+</div>
+<!-- File List Section -->
+<div class="mt-md flex flex-col gap-sm">
+<div class="flex justify-between items-end mb-2">
+<h2 class="text-label-md font-label-md text-on-surface-variant">Uploading (3 files)</h2>
+<span class="text-label-sm font-label-sm text-on-surface-variant">2.4 GB total</span>
+</div>
+<!-- File Item 1: Uploading -->
+<div class="bg-surface-container-lowest rounded-card p-md border border-[#E2E8F0] ambient-shadow-hover flex items-center gap-md">
+<div class="h-12 w-12 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">movie</span>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h4 class="text-label-md font-label-md text-on-surface truncate pr-4">Q3_Marketing_Campaign_Final_Render.mp4</h4>
+<span class="text-label-sm font-label-sm text-on-surface-variant shrink-0">45%</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm text-on-surface-variant mb-2">
+<span>1.2 GB • 2 mins left</span>
+</div>
+<!-- Progress Bar -->
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full rounded-full progress-active" style="width: 45%;"></div>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-2 shrink-0">
+<span class="material-symbols-outlined text-xl">cancel</span>
+</button>
+</div>
+<!-- File Item 2: Complete -->
+<div class="bg-surface-container-lowest rounded-card p-md border border-[#E2E8F0] ambient-shadow-hover flex items-center gap-md">
+<div class="h-12 w-12 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">picture_as_pdf</span>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h4 class="text-label-md font-label-md text-on-surface truncate pr-4">Brand_Guidelines_v2.pdf</h4>
+<span class="material-symbols-outlined text-primary shrink-0 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+<span>24 MB • Upload complete</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-2 shrink-0">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<!-- File Item 3: Complete -->
+<div class="bg-surface-container-lowest rounded-card p-md border border-[#E2E8F0] ambient-shadow-hover flex items-center gap-md">
+<div class="h-12 w-12 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">folder_zip</span>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h4 class="text-label-md font-label-md text-on-surface truncate pr-4">Design_Assets_Raw.zip</h4>
+<span class="material-symbols-outlined text-primary shrink-0 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+<span>1.1 GB • Upload complete</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-2 shrink-0">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Configuration Panel (4 cols on desktop) -->
+<aside class="lg:col-span-5 xl:col-span-4 mt-lg lg:mt-0">
+<div class="bg-surface-container-lowest rounded-card p-md md:p-lg border border-[#E2E8F0] ambient-shadow sticky top-[100px]">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-md">Transfer Details</h2>
+<form class="flex flex-col gap-md">
+<!-- Sender Email -->
+<div class="flex flex-col gap-base">
+<label class="text-label-sm font-label-sm text-on-surface" for="sender-email">From</label>
+<div class="relative input-glow rounded-lg">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-[#E2E8F0] rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:ring-0" id="sender-email" readonly="" type="email" value="alex@enterprise.com"/>
+</div>
+</div>
+<!-- Recipient Emails (Multi-input mockup) -->
+<div class="flex flex-col gap-base">
+<label class="text-label-sm font-label-sm text-on-surface" for="recipient-email">To</label>
+<div class="input-glow rounded-lg border border-[#E2E8F0] bg-surface-container-lowest p-2 flex flex-wrap gap-2 items-center min-h-[44px]">
+<!-- Chip -->
+<div class="bg-surface-container-high text-on-surface text-label-sm font-label-sm px-2 py-1 rounded-md flex items-center gap-1">
+                                client@agency.co
+                                <button class="hover:text-error transition-colors flex items-center" type="button">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+<input class="flex-grow min-w-[120px] bg-transparent border-none p-0 text-body-md font-body-md focus:outline-none focus:ring-0 placeholder:text-on-surface-variant/50" id="recipient-email" placeholder="Add email..." type="email"/>
+</div>
+</div>
+<!-- Message -->
+<div class="flex flex-col gap-base">
+<label class="text-label-sm font-label-sm text-on-surface" for="message">Message (Optional)</label>
+<div class="input-glow rounded-lg">
+<textarea class="block w-full px-3 py-2 bg-surface-container-lowest border border-[#E2E8F0] rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:ring-0 resize-none" id="message" placeholder="Here are the files for the Q3 campaign review..." rows="3"></textarea>
+</div>
+</div>
+<hr class="border-[#E2E8F0] my-2"/>
+<!-- Advanced Options Toggle -->
+<div class="flex items-center justify-between cursor-pointer group" onclick="document.getElementById('advanced-options').classList.toggle('hidden')">
+<span class="text-label-md font-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">settings_applications</span>
+                            Advanced Options
+                        </span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">expand_more</span>
+</div>
+<!-- Advanced Options Panel (Hidden by default, shown for design purposes here) -->
+<div class="flex flex-col gap-md bg-surface p-md rounded-xl border border-surface-container-high mt-1" id="advanced-options">
+<!-- Password Protection -->
+<div class="flex flex-col gap-base">
+<div class="flex items-center justify-between">
+<label class="text-label-sm font-label-sm text-on-surface flex items-center gap-1" for="password">
+<span class="material-symbols-outlined text-[14px]">lock</span> Password
+                                </label>
+<!-- Toggle Switch Mockup -->
+<div class="w-8 h-4 bg-primary-container rounded-full relative cursor-pointer">
+<div class="w-3 h-3 bg-on-primary rounded-full absolute right-0.5 top-0.5"></div>
+</div>
+</div>
+<div class="input-glow rounded-lg mt-1">
+<input class="block w-full px-3 py-2 bg-surface-container-lowest border border-[#E2E8F0] rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:ring-0" id="password" type="password" value="********"/>
+</div>
+</div>
+<!-- Expiration -->
+<div class="flex flex-col gap-base">
+<label class="text-label-sm font-label-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">timer</span> Expiration
+                            </label>
+<div class="grid grid-cols-3 gap-2 mt-1">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="expiration" type="radio"/>
+<div class="text-center py-1.5 px-2 rounded-md border border-[#E2E8F0] bg-surface-container-lowest text-label-sm font-label-sm peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors">
+                                        7 Days
+                                    </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="expiration" type="radio"/>
+<div class="text-center py-1.5 px-2 rounded-md border border-[#E2E8F0] bg-surface-container-lowest text-label-sm font-label-sm peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors">
+                                        30 Days
+                                    </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="expiration" type="radio"/>
+<div class="text-center py-1.5 px-2 rounded-md border border-[#E2E8F0] bg-surface-container-lowest text-label-sm font-label-sm peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors" title="First Download">
+                                        1st DL
+                                    </div>
+</label>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-button mt-2 hover:bg-primary-container transition-colors shadow-sm hover:shadow-md flex items-center justify-center gap-2 group" type="button">
+                        Transfer Files
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center text-label-sm font-label-sm text-on-surface-variant mt-2">
+                        Transferring 3 files (2.4 GB)
+                    </p>
+</form>
+</div>
+</aside>
+</main>
+<script>
+        // Simple drag and drop visual interaction
+        const dropZone = document.getElementById('drop-zone');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('drop-zone-active');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('drop-zone-active');
+        }
+    </script>
+</body></html>
