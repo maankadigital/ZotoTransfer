@@ -5,7 +5,7 @@
       "src": "app-src/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "transfer web"
+        "distDir": "../transfer web"
       }
     }
   ],
