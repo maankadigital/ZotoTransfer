@@ -6,6 +6,6 @@
     "app-src"
   ],
   "scripts": {
-    "build": "npm run build --workspace=app-src"
+    "build": "npm install --workspace=app-src && npm run build --workspace=app-src"
   }
 }
